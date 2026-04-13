@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maa Ganga Line Hotel & Dhaba | Swad Jo Dil Me Bas Jaye</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-orange: #FF6B35;
+            --deep-orange: #E85D04;
+            --warm-yellow: #FAA307;
+            --golden: #FFBA08;
+            --brown: #6F4E37;
+            --dark-brown: #3E2723;
+            --cream: #FFF8E7;
+            --white: #ffffff;
+            --text-primary: #3E2723;
+            --text-secondary: #555555;
+            --bg-primary: #FFF8E7;
+            --card-bg: #ffffff;
+            --veg-green: #22C55E;
+            --nonveg-red: #EF4444;
+        }
+
+        body {
+            font-family: 'Poppins', 'Noto Sans Devanagari', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, var(--dark-brown) 0%, var(--brown) 100%);
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--golden);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo i {
+            font-size: 2rem;
+            color: var(--warm-yellow);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--golden);
+        }
+
+        .mobile-menu {
+            display: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            background: linear-gradient(135deg, rgba(62, 39, 35, 0.8), rgba(111, 78, 55, 0.8)), 
+                        url('https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+        }
+
+        .hero .tagline {
+            font-size: 1.8rem;
+            color: var(--golden);
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-orange), var(--deep-orange));
+            color: var(--white);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 3px solid var(--golden);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            margin-bottom: 50px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-orange);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--card-bg);
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            padding: 60px;
+            margin: 40px auto;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-box {
+            background: var(--bg-primary);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid var(--warm-yellow);
+        }
+
+        .feature-box i {
+            font-size: 2.5rem;
+            color: var(--primary-orange);
+            margin-bottom: 15px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        .veg-nonveg-badge {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+
+        .badge-veg {
+            color: var(--veg-green);
+        }
+
+        .badge-nonveg {
+            color: var(--nonveg-red);
+        }
+
+        /* Menu Section */
+        .menu-section {
+            background: linear-gradient(135deg, #FFF8E7 0%, #FFE5B4 100%);
+        }
+
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .tab-btn {
+            padding: 12px 30px;
+            border: none;
+            background: var(--white);
+            color: var(--text-primary);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .tab-btn.active {
+            background: var(--primary-orange);
+            color: var(--white);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .menu-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .menu-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .dietary-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .veg-badge {
+            background: var(--veg-green);
+        }
+
+        .nonveg-badge {
+            background: var(--nonveg-red);
+        }
+
+        .menu-info {
+            padding: 25px;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            color: var(--deep-orange);
+            font-weight: 700;
+        }
+
+        /* ═══════════════════════════════════════════════════ */
+        /* BOOKING SECTION - FORMSPREE INTEGRATION */
+        /* ═══════════════════════════════════════════════════ */
+        
+        .booking-section {
+            background: linear-gradient(135deg, var(--dark-brown), var(--brown));
+            color: var(--white);
+            border-radius: 30px;
+            padding: 60px;
+            margin: 40px auto;
+        }
+
+        .booking-section .section-title {
+            color: var(--white);
+        }
+
+        .booking-section .section-title::after {
+            background: var(--golden);
+        }
+
+        .booking-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--golden);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.9);
+            color: var(--text-primary);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--primary-orange), var(--deep-orange));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(232, 93, 4, 0.4);
+        }
+
+        /* Success Message Styling */
+        .success-message {
+            display: none;
+            background: var(--veg-green);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 20px;
+            animation: slideIn 0.5s ease;
+        }
+
+        .success-message i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Reviews */
+        .reviews-section {
+            background: var(--white);
+        }
+
+        .review-card {
+            background: var(--bg-primary);
+            padding: 30px;
+            border-radius: 20px;
+            border-left: 5px solid var(--primary-orange);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .stars {
+            color: var(--warm-yellow);
+            margin-bottom: 15px;
+        }
+
+        /* Contact */
+        .contact-section {
+            background: linear-gradient(135deg, var(--dark-brown), var(--brown));
+            color: var(--white);
+            border-radius: 30px;
+            padding: 60px;
+            margin: 40px auto;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .map-container {
+            background: var(--white);
+            padding: 10px;
+            border-radius: 20px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+            border-radius: 15px;
+        }
+
+        .call-now-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--veg-green);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-brown);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-section,
+            .contact-section,
+            .about {
+                padding: 30px;
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-om"></i>
+                <span>Maa Ganga Dhaba</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#booking">Booking</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Maa Ganga Line Hotel & Dhaba</h1>
+            <p class="tagline">"Swad Jo Dil Me Bas Jaye"</p>
+            <div class="hero-buttons">
+                <a href="#booking" class="btn btn-primary">Book Now</a>
+                <a href="#contact" class="btn btn-secondary">Visit Us Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="about">
+            <h2 class="section-title">About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Family-Friendly Dhaba Experience</h3>
+                    <p>Welcome to Maa Ganga Line Hotel & Dhaba, located in Farda Purvi Tola. We serve authentic Indian food with both Veg and Non-Veg options.</p>
+                    
+                    <div class="features">
+                        <div class="feature-box">
+                            <i class="fas fa-leaf"></i>
+                            <h4>Fresh Ingredients</h4>
+                        </div>
+                        <div class="feature-box">
+                            <i class="fas fa-heart"></i>
+                            <h4>Made with Love</h4>
+                        </div>
+                        <div class="feature-box">
+                            <i class="fas fa-rupee-sign"></i>
+                            <h4>Affordable</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dhaba">
+                    <div class="veg-nonveg-badge">
+                        <span class="badge-veg"><i class="fas fa-leaf"></i> Veg</span>
+                        <span class="badge-nonveg"><i class="fas fa-drumstick-bite"></i> Non-Veg</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <h2 class="section-title">Our Menu</h2>
+        
+        <div class="menu-tabs">
+            <button class="tab-btn active">All Items</button>
+            <button class="tab-btn">Vegetarian</button>
+            <button class="tab-btn">Non-Vegetarian</button>
+        </div>
+
+        <div class="menu-grid">
+            <!-- Veg Items -->
+            <div class="menu-card">
+                <div class="menu-image">
+                    <img src="https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tea">
+                    <span class="dietary-badge veg-badge"><i class="fas fa-leaf"></i> VEG</span>
+                </div>
+                <div class="menu-info">
+                    <h3>Masala Chai</h3>
+                    <p>Authentic Indian tea with spices</p>
+                    <div class="price">₹20</div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <div class="menu-image">
+                    <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Paneer">
+                    <span class="dietary-badge veg-badge"><i class="fas fa-leaf"></i> VEG</span>
+                </div>
+                <div class="menu-info">
+                    <h3>Paneer Masala</h3>
+                    <p>Fresh cottage cheese in rich gravy</p>
+                    <div class="price">₹180</div>
+                </div>
+            </div>
+
+            <!-- Non-Veg Items -->
+            <div class="menu-card">
+                <div class="menu-image">
+                    <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Egg Curry">
+                    <span class="dietary-badge nonveg-badge"><i class="fas fa-drumstick-bite"></i> NON-VEG</span>
+                </div>
+                <div class="menu-info">
+                    <h3>Egg Curry</h3>
+                    <p>Boiled eggs in spicy gravy</p>
+                    <div class="price">₹100</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- BOOKING SECTION - FORMSPREE FORM -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <section id="booking">
+        <div class="booking-section">
+            <h2 class="section-title">Book Your Table</h2>
+            
+            <!-- 
+                IMPORTANT: Yeh form automatically aapke email pe bhejega!
+                Aapka Formspree Link: https://formspree.io/f/mvzvezbb
+            -->
+            <form 
+                class="booking-form" 
+                action="https://formspree.io/f/mvzvezbb" 
+                method="POST"
+            >
+                <!-- Customer Name -->
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Customer Name</label>
+                    <input 
+                        type="text" 
+                        name="name" 
+                        placeholder="Enter your full name" 
+                        required
+                    >
+                </div>
+                
+                <!-- Mobile Number -->
+                <div class="form-group">
+                    <label><i class="fas fa-phone"></i> Mobile Number</label>
+                    <input 
+                        type="tel" 
+                        name="mobile" 
+                        placeholder="Enter 10-digit number" 
+                        pattern="[0-9]{10}"
+                        required
+                    >
+                </div>
+                
+                <!-- Booking Date -->
+                <div class="form-group">
+                    <label><i class="fas fa-calendar"></i> Booking Date</label>
+                    <input 
+                        type="date" 
+                        name="date" 
+                        required
+                    >
+                </div>
+                
+                <!-- Preferred Time -->
+                <div class="form-group">
+                    <label><i class="fas fa-clock"></i> Preferred Time</label>
+                    <select name="time" required>
+                        <option value="">Select Time</option>
+                        <option value="08:00 AM">08:00 AM - Breakfast</option>
+                        <option value="12:00 PM">12:00 PM - Lunch</option>
+                        <option value="04:00 PM">04:00 PM - Snacks</option>
+                        <option value="08:00 PM">08:00 PM - Dinner</option>
+                    </select>
+                </div>
+                
+                <!-- Number of Guests -->
+                <div class="form-group">
+                    <label><i class="fas fa-users"></i> Number of Guests</label>
+                    <select name="guests" required>
+                        <option value="">Select Guests</option>
+                        <option value="1-2">1-2 People</option>
+                        <option value="3-4">3-4 People</option>
+                        <option value="5-6">5-6 People</option>
+                        <option value="7+">7+ People</option>
+                    </select>
+                </div>
+
+                <!-- Hidden field for subject line -->
+                <input type="hidden" name="_subject" value="New Table Booking - Maa Ganga Dhaba">
+                
+                <!-- Success page redirect -->
+                <input type="hidden" name="_next" value="https://your-website.com/thanks.html">
+                
+                <!-- Disable captcha (optional) -->
+                <input type="hidden" name="_captcha" value="false">
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-check-circle"></i> Submit Booking
+                </button>
+            </form>
+
+            <!-- Success Message (shows after submission) -->
+            <div class="success-message" id="successMsg">
+                <i class="fas fa-check-circle"></i>
+                <h3>Booking Received! 🎉</h3>
+                <p>Thank you! We will call you to confirm your table.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <h2 class="section-title">Our Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Interior">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Food">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Dal">
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews-section">
+        <h2 class="section-title">Customer Reviews</h2>
+        <div class="reviews-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            <div class="review-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p>"Best dhaba near HP Petrol Pump! Delicious food."</p>
+                <h4>- Rajesh Kumar</h4>
+            </div>
+            <div class="review-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+                <p>"Affordable and tasty. Perfect for family dinners."</p>
+                <h4>- Amit Singh</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-section">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Visit Us Today!</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Farda Purvi Tola, Near HP Petrol Pump</p>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-clock"></i> 7:00 AM - 10:00 PM (Daily)</p>
+                    <a href="tel:+919876543210" class="call-now-btn">
+                        <i class="fas fa-phone-alt"></i> Call Now
+                    </a>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3500!2d!3d!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDAzJzIwLjAiTiA3NMKwMjUnMzAuMCJF!5e0!3m2!1sen!2sin!4v1!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="logo" style="justify-content: center; margin-bottom: 20px;">
+            <i class="fas fa-om"></i>
+            <span>Maa Ganga Line Hotel & Dhaba</span>
+        </div>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+        </div>
+        <p style="color: var(--golden);">"Swad Jo Dil Me Bas Jaye"</p>
+        <p style="margin-top: 20px; opacity: 0.6;">&copy; 2024 Maa Ganga Dhaba. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Date Minimum -->
+    <script>
+        // Set minimum date to today (kal ka date select nahi hoga)
+        document.querySelector('input[name="date"]').min = new Date().toISOString().split('T')[0];
+        
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>
